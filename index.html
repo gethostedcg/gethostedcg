@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>ChrisFlicks</title>
+<title>FlickTime</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -18,28 +18,21 @@ body {font-size: 16px;}
 img {margin-bottom: -8px;}
 .mySlides {display: none;}
 </style>
-<body class="w3-content" style="max-width:1500px;">
+<body class="w3-content w3-light-grey" style="max-width:1500px;">
 <body>
 
   <!-- Features Section -->
-<div id="top" class="w3-container w3-dark-grey w3-center">
-  <h2 class="w3-jumbo"><b>Cinelist 2.1</b></h2>
-  <p>Find Cinema listings from your location.</p>
+<div id="top" style="  border-radius: 30px 30px 30px;
+  background: #73AD21;
+  padding: 20px;"  class="w3-container w3-dark-grey w3-center">
+  <h1 class=""><b>FlickTime</b></h1>
+  <p>Cinema listings based on your location.</p>
   </div>
 
   <div class="w3-center">
     <br>
 
-    <button class="w3-button w3-black w3-padding-large" onclick="getLocation()">Locate <i class="fas fa-location-arrow"></i> </button>
-<p id="demo"></p>
-
-<td>
-
-
-
-
-
-
+    <button class="w3-button w3-purple w3-round-xxlarge w3-padding-large" onclick="getLocation()">Locate <i class="fas fa-location-arrow w3-text-amber"></i> </button>
 
 <!--<script>
 // GET LOCATION
@@ -102,20 +95,17 @@ fetch(url, {insecure: true, credentials: "same-origin"})
 
 
   </div>
-  <div id="div1">
-  </div>
+
 
 <div class="w3-container">
-
-
 
 <hr>
 
 <div class="w3-border">
 <div class="w3-bar w3-theme">
-  <button  id="cinema1" class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openCity(event,'Nearest')">1st</button>
-  <button id="cinema2" class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openCity(event,'Nearest2')">2nd</button>
-  <button id="cinema3" class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openCity(event,'Nearest3')">3rd</button>
+  <button  id="cinema1" class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openCity(event,'Nearest')">Results:</button>
+  <button style="display: none" id="cinema2" class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openCity(event,'Nearest2')">2nd</button>
+  <button style="display: none" id="cinema3" class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openCity(event,'Nearest3')">3rd</button>
 </div>
 <div id="Nearest" class="w3-container city w3-animate-opacity">
   <p id="table1" style="  overflow: auto;" class=" w3-container w3-content w3-left">

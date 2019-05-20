@@ -58,7 +58,7 @@ fetch(url, {insecure: true, credentials: "same-origin"})
          var i;
          var text = "";
          for (i = 0; i < listings.length; i++) {
-           text += "<b>" + data.listings[i].title + ": "  + "</b>"  + data.listings[i].times + "<hr>";
+           text += "<p>" + "<b>" + data.listings[i].title + ": "  + "</b>"  + "<pre>" + data.listings[i].times + "</pre>" + "<hr>" + "</p>";
          }
          document.getElementById("table1").innerHTML = text;
 
