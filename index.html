@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
-<title>W3.CSS Template</title>
+<title>ChrisFlicks</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
 <head>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-</head>
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>-->
   <style>
 body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
 body {font-size: 16px;}
@@ -33,16 +33,13 @@ img {margin-bottom: -8px;}
     <button class="w3-button w3-black w3-padding-large" onclick="getLocation()">Use my location</button>
 <p id="demo"></p>
 
-
-<div class="w3-container w3-content w3-light-grey  w3-block " >
-  <p  id="showings">Results:
-</p>
-
-<p id="table" class=" w3-left w3-container w3-content w3-center"> </p>
-
-
-</div>
 <td>
+
+
+
+
+
+
 
 <script>
 // GET LOCATION
@@ -62,6 +59,7 @@ function showPosition(position) {
 var lat = position.coords.latitude;
 var lon = position.coords.longitude;
 var url = "https://76ea5f03.ngrok.io/search/cinemas/coordinates/" + lat + "/" + lon;
+// var url = "http://localhost:3000/search/cinemas/coordinates/" + lat + "/" + lon;
 var nearestcinema;
 var listings;
 fetch(url, {insecure: true, credentials: "same-origin"})
@@ -74,9 +72,10 @@ fetch(url, {insecure: true, credentials: "same-origin"})
     console.log(data);  // { "userId": 1, "id": 1, "title": "...", "body": "..." }
       nearestcinema = data.cinemas[0].id;
      console.log(nearestcinema);
-     document.getElementById("showings").innerHTML = data.cinemas[0].name;
+     document.getElementById("cinema1").innerHTML = data.cinemas[0].name;
      console.log(data.cinemas[0].name);
      return fetch("https://76ea5f03.ngrok.io/get/times/cinema/" + nearestcinema); // make a 2nd request and return a promise
+  //     return fetch("http://localhost:3000/get/times/cinema/" + nearestcinema); // make a 2nd request and return a promise
   })
   .then(function(response) {
       // The response is a Response instance.
@@ -108,34 +107,33 @@ fetch(url, {insecure: true, credentials: "same-origin"})
   </div>
   <div id="div1">
   </div>
+
 <div class="w3-container">
 
-<!---COOL TABS-------------------------
+
+
 <hr>
-<h2 class="w3-center">Tabs</h2>
+
 <div class="w3-border">
 <div class="w3-bar w3-theme">
-  <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openCity(event,'London')">London</button>
-  <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openCity(event,'Paris')">Paris</button>
-  <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openCity(event,'Tokyo')">Tokyo</button>
+  <button  id="cinema1" class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openCity(event,'Nearest')">1st</button>
+  <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openCity(event,'Nearest2')">2nd</button>
+  <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openCity(event,'Nearest3')">3rd</button>
 </div>
-<div id="London" class="w3-container city w3-animate-opacity">
-  <h2>London</h2>
-  <p>London is the capital city of England.</p>
-  <p>It is the most populous city in the United Kingdom, with a metropolitan area of over 13 million inhabitants.</p>
+<div id="Nearest" class="w3-container city w3-animate-opacity">
+  <p id="table" style="  overflow: auto;" class=" w3-container w3-content w3-left">
+  Use the Locate button to find local cinema listings.</p>
 </div>
-<div id="Paris" class="w3-container city w3-animate-opacity">
-  <h2>Paris</h2>
-  <p>Paris is the capital of France.</p>
-  <p>The Paris area is one of the largest population centers in Europe, with more than 12 million inhabitants.</p>
+<div id="Nearest2" class="w3-container city w3-animate-opacity">
+  <p id="table2" style="align: left; overflow: auto;" class=" w3-container w3-content w3-left">
+  Use the Locate button to find local cinema listings.</p>
 </div>
-<div id="Tokyo" class="w3-container city w3-animate-opacity">
-  <h2>Tokyo</h2>
-  <p>Tokyo is the capital of Japan.</p>
-  <p>It is the center of the Greater Tokyo Area, and the most populous metropolitan area in the world.</p>
+<div id="Nearest3" class="w3-container city w3-animate-opacity">
+  <p id="table3" style="overflow: auto;" class=" w3-container w3-content w3-left">
+  Use the Locate button to find local cinema listings.</p>
 </div>
 </div>
---------------------------------------------END COOL TABS------------------------->
+
 
 <hr>
 
