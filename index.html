@@ -20,13 +20,13 @@ img {margin-bottom: -8px;}
 
 
   <h4 id="top" class="w3-center w3-black">Top</h4>
-  
+
   <!-- Features Section -->
 <div id="top" class="w3-container w3-dark-grey w3-center">
-  <h1 class="w3-jumbo"><b>Cinelist</b></h1>
+  <h1 class="w3-jumbo"><b>Cinelist 2.0</b></h1>
   <p>Find Cinema listings from your location.</p>
   </div>
-  
+
   <div class="w3-center">
     <br>
 
@@ -61,7 +61,7 @@ function showPosition(position) {
     console.log("location saved");
 var lat = position.coords.latitude;
 var lon = position.coords.longitude;
-var url = "https://api.cinelist.co.uk/search/cinemas/coordinates/" + lat + "/" + lon;
+var url = "https://76ea5f03.ngrok.io/search/cinemas/coordinates/" + lat + "/" + lon;
 var nearestcinema;
 var listings;
 fetch(url, {insecure: true, credentials: "same-origin"})
@@ -76,7 +76,7 @@ fetch(url, {insecure: true, credentials: "same-origin"})
      console.log(nearestcinema);
      document.getElementById("showings").innerHTML = data.cinemas[0].name;
      console.log(data.cinemas[0].name);
-     return fetch("https://api.cinelist.co.uk/get/times/cinema/" + nearestcinema); // make a 2nd request and return a promise
+     return fetch("https://76ea5f03.ngrok.io/get/times/cinema/" + nearestcinema); // make a 2nd request and return a promise
   })
   .then(function(response) {
       // The response is a Response instance.
@@ -95,7 +95,6 @@ fetch(url, {insecure: true, credentials: "same-origin"})
          + "<b>" + data.listings[5].title  + "</b>" + " " + data.listings[5].times +"<hr>"
          + "<b>" + data.listings[6].title  + "</b>" + " " +"<p>"+ data.listings[6].times +"</p>" +"<hr>"
          +"<b>" + data.listings[7].title  + "</b>" + " " + data.listings[7].times +"<hr>"
-
   });  // I THINK THIS IS THE CLOSE
 //this was used to show promise  .then(res => console.log(res));
 //  console.log("the get worked");
