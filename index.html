@@ -32,38 +32,26 @@
 <td>
 
 <script>
-
-
 // GET LOCATION
 var x = document.getElementById("demo");
 var l = document.getElementById("listingstable");
-
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
-
   } else {
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
 }
-
 function showPosition(position) {
-
   // x.innerHTML = "Latitude: " + position.coords.latitude +
   // "<br>Longitude: " + position.coords.longitude;
     console.log("location saved");
-
-
-
-
 var lat = position.coords.latitude;
 var lon = position.coords.longitude;
 var url = "https://api.cinelist.co.uk/search/cinemas/coordinates/" + lat + "/" + lon;
 var nearestcinema;
 var listings;
-
-
-fetch(url)
+fetch(url, {insecure: true, credentials: "same-origin"})
 .then(function(response) {
     // The response is a Response instance.
     // You parse the data into a useable format using `.json()`
@@ -75,9 +63,6 @@ fetch(url)
      console.log(nearestcinema);
      document.getElementById("showings").innerHTML = data.cinemas[0].name;
      console.log(data.cinemas[0].name);
-
-
-
      return fetch("https://api.cinelist.co.uk/get/times/cinema/" + nearestcinema); // make a 2nd request and return a promise
   })
   .then(function(response) {
@@ -89,7 +74,6 @@ fetch(url)
       console.log(data);  // { "userId": 1, "id": 1, "title": "...", "body": "..." }
         listings = data.listings[0].title;
          console.log(listings);
-
          document.getElementById("table").innerHTML = "<b>" + data.listings[0].title  + "</b>" + " " + data.listings[0].times +"<hr>"
          + "<b>" + data.listings[1].title  + "</b>" + " " + data.listings[1].times +"<hr>"
          + "<b>" + data.listings[2].title  + "</b>" + " " + data.listings[2].times +"<hr>"
@@ -98,30 +82,11 @@ fetch(url)
          + "<b>" + data.listings[5].title  + "</b>" + " " + data.listings[5].times +"<hr>"
          + "<b>" + data.listings[6].title  + "</b>" + " " +"<p>"+ data.listings[6].times +"</p>" +"<hr>"
          +"<b>" + data.listings[7].title  + "</b>" + " " + data.listings[7].times +"<hr>"
-         + "<b>" + data.listings[8].title  + "</b>" + " " + data.listings[8].times +"<hr>"
-         + "<b>" + data.listings[9].title  + "</b>" + " " + data.listings[9].times +"<hr>"
-         + "<b>" + data.listings[10].title  + "</b>" + " " + data.listings[10].times +"<hr>"
-         + "<b>" + data.listings[11].title  + "</b>" + " " + data.listings[11].times +"<hr>"
-         + "<b>" + data.listings[12].title  + "</b>" + " " + data.listings[12].times +"<hr>"
-         + "<b>" + data.listings[13].title  + "</b>" + " " + data.listings[13].times +"<hr>";
-
-
-
-
-
-
 
   });  // I THINK THIS IS THE CLOSE
-
-
-
-
 //this was used to show promise  .then(res => console.log(res));
 //  console.log("the get worked");
-
 }
-
-
 </script>
 
 
@@ -142,19 +107,16 @@ fetch(url)
   <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openCity(event,'Paris')">Paris</button>
   <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openCity(event,'Tokyo')">Tokyo</button>
 </div>
-
 <div id="London" class="w3-container city w3-animate-opacity">
   <h2>London</h2>
   <p>London is the capital city of England.</p>
   <p>It is the most populous city in the United Kingdom, with a metropolitan area of over 13 million inhabitants.</p>
 </div>
-
 <div id="Paris" class="w3-container city w3-animate-opacity">
   <h2>Paris</h2>
   <p>Paris is the capital of France.</p>
   <p>The Paris area is one of the largest population centers in Europe, with more than 12 million inhabitants.</p>
 </div>
-
 <div id="Tokyo" class="w3-container city w3-animate-opacity">
   <h2>Tokyo</h2>
   <p>Tokyo is the capital of Japan.</p>
@@ -170,7 +132,7 @@ fetch(url)
   <h3>Made by </h3>
 
   <div style="position:relative;bottom:55px;" class="w3-tooltip w3-right">
-    <span class="w3-text w3-theme-light w3-padding">Go To Top</span> 
+    <span class="w3-text w3-theme-light w3-padding">Go To Top</span>
     <a class="w3-text-white" href="#top"><span class="w3-xlarge">
     <i class="fa fa-chevron-circle-up"></i></span></a>
   </div>
@@ -189,7 +151,6 @@ function w3_open() {
 function w3_close() {
   document.getElementById("mySidebar").style.display = "none";
 }
-
 // Tabs
 function openCity(evt, cityName) {
   var i;
@@ -204,10 +165,8 @@ function openCity(evt, cityName) {
   document.getElementById(cityName).style.display = "block";
   evt.currentTarget.className += " w3-dark-grey";
 }
-
 var mybtn = document.getElementsByClassName("testbtn")[0];
 mybtn.click();
-
 // Accordions
 function myAccFunc(id) {
   var x = document.getElementById(id);
@@ -217,15 +176,12 @@ function myAccFunc(id) {
     x.className = x.className.replace(" w3-show", "");
   }
 }
-
 // Slideshows
 var slideIndex = 1;
-
 function plusDivs(n) {
   slideIndex = slideIndex + n;
   showDivs(slideIndex);
 }
-
 function showDivs(n) {
   var x = document.getElementsByClassName("mySlides");
   if (n > x.length) {slideIndex = 1}
@@ -235,9 +191,7 @@ function showDivs(n) {
   }
   x[slideIndex-1].style.display = "block";
 }
-
 showDivs(1);
-
 // Progress Bars
 function move() {
   var elem = document.getElementById("myBar");
