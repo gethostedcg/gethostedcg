@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style>
+.lds-spinner {
+  color: official;
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.lds-spinner div {
+  transform-origin: 32px 32px;
+  animation: lds-spinner 1.2s linear infinite;
+}
+.lds-spinner div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 3px;
+  left: 29px;
+  width: 5px;
+  height: 14px;
+  border-radius: 20%;
+  background: #fff;
+}
+.lds-spinner div:nth-child(1) {
+  transform: rotate(0deg);
+  animation-delay: -1.1s;
+}
+.lds-spinner div:nth-child(2) {
+  transform: rotate(30deg);
+  animation-delay: -1s;
+}
+.lds-spinner div:nth-child(3) {
+  transform: rotate(60deg);
+  animation-delay: -0.9s;
+}
+.lds-spinner div:nth-child(4) {
+  transform: rotate(90deg);
+  animation-delay: -0.8s;
+}
+.lds-spinner div:nth-child(5) {
+  transform: rotate(120deg);
+  animation-delay: -0.7s;
+}
+.lds-spinner div:nth-child(6) {
+  transform: rotate(150deg);
+  animation-delay: -0.6s;
+}
+.lds-spinner div:nth-child(7) {
+  transform: rotate(180deg);
+  animation-delay: -0.5s;
+}
+.lds-spinner div:nth-child(8) {
+  transform: rotate(210deg);
+  animation-delay: -0.4s;
+}
+.lds-spinner div:nth-child(9) {
+  transform: rotate(240deg);
+  animation-delay: -0.3s;
+}
+.lds-spinner div:nth-child(10) {
+  transform: rotate(270deg);
+  animation-delay: -0.2s;
+}
+.lds-spinner div:nth-child(11) {
+  transform: rotate(300deg);
+  animation-delay: -0.1s;
+}
+.lds-spinner div:nth-child(12) {
+  transform: rotate(330deg);
+  animation-delay: 0s;
+}
+@keyframes lds-spinner {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+</style>
+
+<body class="w3-content" style="max-width:1300px">
+
+<!-- Header -->
+<div id="section1" class="w3-row">
+  <div class="w3-half w3-black w3-container w3-center" style="height:700px">
+    <div class="w3-padding-64">
+      <h1>Locator</h1>
+    </div>
+    <div class="w3-padding-64">
+      <a href="#section2" class="w3-button w3-black w3-block w3-hover-blue-grey w3-padding-16" onclick="getLocation();showSpinner()">Use Location <i class="fas fa-location-arrow w3-text-amber"></i></a>
+
+
+      <a  href="#Results" onclick="showPostcodebox()" class=" w3-button w3-black w3-block w3-hover-teal w3-padding-16">Use Postcode</a>
+      <script>
+      function showPostcodebox() {
+  var x = document.getElementById("postcode");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+      </script>
+      <form style=" display:none" id="postcode">
+      <p><input class="w3-input w3-border" type="text" placeholder="e.g. G114RT" required name="postcode"></p>
+
+
+
+    <a href="#Results" type="submit" class="w3-button w3-teal ">Locate</a>
+    </form>
+
+    </div>
+  </div>
+
+
+  <div id="section2" class="w3-center w3-half w3-blue-grey w3-container" style="min-height: 700px; height:100%">
+    <div class="w3-padding-64 w3-center">
+      <h1 id="cinema1" >Results</h1>
+
+          <div id="spinner"  class="w3-center lds-spinner" style="display: none" ><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
+      <div class="w3-left-align w3-padding-large">
+        <p id="table1" ></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+function showSpinner() {
+  document.getElementById("spinner").style.display = "block";
+}
+</script>
+<!-- Footer -->
+<footer class="w3-container w3-black w3-padding-16">
+   <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">About</a>
+</footer>
+<script src="cinema2.js"></script>
+<script src="scroll.js"></script>
+</body>
+</html>
