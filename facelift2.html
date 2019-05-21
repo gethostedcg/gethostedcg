@@ -7,6 +7,19 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
+div hr{
+Margin-top:5px;
+margin-bottom:5px;
+
+}
+
+div p{
+Margin-top:1px;
+margin-bottom:1px;
+margin-right:10px;
+
+}
+
 .lds-spinner {
   color: official;
   display: inline-block;
@@ -90,16 +103,23 @@
 <body class="w3-content" style="max-width:1300px">
 
 <!-- Header -->
+
 <div id="section1" class="w3-row">
+
   <div class="w3-half w3-black w3-container w3-center" style="height:700px">
+
     <div class="w3-padding-64">
-      <h1>Locator</h1>
+
+  <!--    <img style="height:80px; margin-left:-16px; float:left;  z-index: 1 " src = "./logo5.png"></img>-->
+      <h1 class="w3-center w3-wide" >flixy <i class="fas fa-video fa-sm"></i> </h1>
+      <p class="w3-small">Find film times at your nearest cinema</p>
     </div>
+
     <div class="w3-padding-64">
-      <a href="#section2" class="w3-button w3-black w3-block w3-hover-blue-grey w3-padding-16" onclick="getLocation();showSpinner()">Use Location <i class="fas fa-location-arrow w3-text-amber"></i></a>
+      <a href="#section2" class="w3-button w3-black w3-block w3-hover-blue-grey w3-padding-16" onclick="getLocation()">Use Location <i class="fas fa-location-arrow w3-text-amber"></i></a>
 
 
-      <a  href="#Results" onclick="showPostcodebox()" class=" w3-button w3-black w3-block w3-hover-teal w3-padding-16">Use Postcode</a>
+      <a onclick="showPostcodebox()" class=" w3-button w3-black w3-block w3-hover-teal w3-padding-16">Use Postcode <i class="fas fa-home w3-text-amber"></i> </a>
       <script>
       function showPostcodebox() {
   var x = document.getElementById("postcode");
@@ -109,36 +129,45 @@
     x.style.display = "none";
   }
 }
-      </script>
-      <form style=" display:none" id="postcode">
-      <p><input class="w3-input w3-border" type="text" placeholder="e.g. G114RT" required name="postcode"></p>
+   </script>
 
+<!--POST CODE FORM -->
+<form id="postcode" style="display:none;">
+<input class="w3-input w3-border"  type="text" id="fname" placeholder="e.g. G114RT">
+<a href="#section2"><input href="#Results" type="button" id="inputpostcode" onclick="postcodeSearch()" value="Submit" class="w3-button w3-teal"></a>
+</form>
 
-
-    <a href="#Results" type="submit" class="w3-button w3-teal ">Locate</a>
-    </form>
-
+<script src="postcode.js">
+</script>
     </div>
   </div>
 
-</div>
-<div id="section2" class="w3-center w3-blue-grey w3-container" style="min-height: 700px; height:100%">
-  <div class="w3-padding-32 w3-center">
-    <h1 id="cinema1" >Results</h1>
 
-        <div id="spinner" class=" w3-middle w3-center lds-spinner" style="margin: auto; display: none" ><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+  <div id="section2" class="w3-center w3-half w3-blue-grey w3-container" style="min-height: 700px; height:100%">
+    <div class="w3-padding-32 w3-center">
+      <h1 id="cinema1" >Results</h1>
 
-    <div class="w3-left-align w3-padding-large">
-      <p id="table1" ></p>
+      <div> <span id="showdateday" ></span> <span id="showdatemonth" ></span></div>
+
+
+          <div id="spinner"  class="w3-center lds-spinner" style="margin: auto; display: none" ><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
+
+      <div class="w3-left-align w3-padding-large">
+        <p style= "overflow-wrap: break-word; " id="table1" ></p>
+      </div>
     </div>
   </div>
 </div>
+
 
 
 <!-- Footer -->
-<footer class="w3-container w3-black w3-padding-16">
+<footer class="w3-container w3-darker-grey w3-padding-16">
    <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">About</a>
 </footer>
+
+
 <script src="cinema2.js"></script>
 <script src="scroll.js"></script>
 </body>

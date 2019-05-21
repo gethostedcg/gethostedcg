@@ -42,7 +42,8 @@ fetch(url, {insecure: true, credentials: "same-origin"})
      console.log(nearestcinema);
      console.log(nearestcinema2);
       console.log(nearestcinema3);
-     document.getElementById("cinema1").innerHTML = data.cinemas[0].name;
+
+     document.getElementById("cinema1").innerHTML = data.cinemas[0].name.split(',')[0]
 //     document.getElementById("cinema3").innerHTML = data.cinemas[2].name;
 //     console.log(data.cinemas[0].name);
       return fetch("https://f652618e.ngrok.io/get/times/cinema/" + nearestcinema); // make a 2nd request and return a promise
@@ -62,10 +63,32 @@ fetch(url, {insecure: true, credentials: "same-origin"})
          var i;
          var text = "";
          for (i = 0; i < listings.length; i++) {
-           text += "<p>" + "<b>" + data.listings[i].title + ": "  + "</b>"  + "<pre>" + data.listings[i].times + "</pre>" + "<hr>" + "</p>";
+           text += "<p>" + "<b>" + data.listings[i].title + ": "  + "</b>"  + "<p>" + " " + data.listings[i].times + "</p>" + "<hr>" + "</p>";
          }
+
+//INSERT TODAYS DATE
+        var d = new Date();
+        document.getElementById("showdateday").innerHTML = "Todays showings, " + d.getDate();
+
+        var months    = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+        var now       = new Date();
+        var thisMonth = months[now.getMonth()]; // getMonth method returns the month of the date (0-January :: 11-December)
+        var output = document.getElementById('showdatemonth');
+        console.log(thisMonth);
+
+         if(output.textContent !== undefined) {
+            output.textContent = thisMonth + ":";
+          }
+          else {
+            output.innerText = thisMonth;
+          }
+//END OF DATE CODE
+
+
+
          document.getElementById("table1").innerHTML = text;
         document.getElementById("spinner").style.display = "none";
+
 
 
 //   document.getElementById("table1").innerHTML = "<b>" + data.listings[0].title  + "</b>" + " " + data.listings[0].times +"<hr>"
