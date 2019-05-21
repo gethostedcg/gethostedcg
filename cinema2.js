@@ -5,6 +5,11 @@ var l = document.getElementById("listingstable");
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
+
+
+      document.getElementById("spinner").style.display = "block";
+
+
   } else {
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
@@ -15,7 +20,7 @@ function showPosition(position) {
     console.log("location saved");
 var lat = position.coords.latitude;
 var lon = position.coords.longitude;
- var url = "https://76ea5f03.ngrok.io/search/cinemas/coordinates/" + lat + "/" + lon;
+ var url = "https://f652618e.ngrok.io/search/cinemas/coordinates/" + lat + "/" + lon;
 // var url = "http://localhost:3000/search/cinemas/coordinates/" + lat + "/" + lon;
 
 // Closest Nearest Cinema
@@ -38,10 +43,9 @@ fetch(url, {insecure: true, credentials: "same-origin"})
      console.log(nearestcinema2);
       console.log(nearestcinema3);
      document.getElementById("cinema1").innerHTML = data.cinemas[0].name;
-     document.getElementById("cinema2").innerHTML = data.cinemas[1].name;
-     document.getElementById("cinema3").innerHTML = data.cinemas[2].name;
-     console.log(data.cinemas[0].name);
-      return fetch("https://76ea5f03.ngrok.io/get/times/cinema/" + nearestcinema); // make a 2nd request and return a promise
+//     document.getElementById("cinema3").innerHTML = data.cinemas[2].name;
+//     console.log(data.cinemas[0].name);
+      return fetch("https://f652618e.ngrok.io/get/times/cinema/" + nearestcinema); // make a 2nd request and return a promise
   //  return fetch("http://localhost:3000/get/times/cinema/" + nearestcinema); // make a 2nd request and return a promise
 
   })
@@ -61,6 +65,7 @@ fetch(url, {insecure: true, credentials: "same-origin"})
            text += "<p>" + "<b>" + data.listings[i].title + ": "  + "</b>"  + "<pre>" + data.listings[i].times + "</pre>" + "<hr>" + "</p>";
          }
          document.getElementById("table1").innerHTML = text;
+        document.getElementById("spinner").style.display = "none";
 
 
 //   document.getElementById("table1").innerHTML = "<b>" + data.listings[0].title  + "</b>" + " " + data.listings[0].times +"<hr>"
