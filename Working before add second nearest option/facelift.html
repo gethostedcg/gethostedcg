@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body class="w3-content" style="max-width:1300px">
+
+<!-- First Grid: Logo & About -->
+<div class="w3-row">
+  <div class="w3-half w3-black w3-container w3-center" style="height:700px">
+    <div class="w3-padding-64">
+      <h1>Locator</h1>
+    </div>
+    <div class="w3-padding-64">
+      <a href="#Results" class="w3-button w3-black w3-block w3-hover-blue-grey w3-padding-16">Use Location</a>
+      
+      
+      <a onclick="showPostcodebox()" class=" w3-button w3-black w3-block w3-hover-teal w3-padding-16">Use Postcode</a>
+      <script>
+      function showPostcodebox() {
+  var x = document.getElementById("postcode");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+      </script>
+      <form style=" display:none" id="postcode">
+      <p><input class="w3-input w3-border" type="text" placeholder="e.g. G114RT" required name="postcode"></p>
+      
+      
+  
+    <a href="#Results" type="submit" class="w3-button w3-teal ">Locate</a>
+    </form>
+   
+    </div>
+  </div>
+  <div class="w3-half w3-blue-grey w3-container" style="height:700px">
+    <div class="w3-padding-64 w3-center">
+      <h1 id="Results" >Results</h1>
+     
+      <div class="w3-left-align w3-padding-large">
+        <p>Lorem ipusm sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Footer -->
+<footer class="w3-container w3-black w3-padding-16">
+   <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">About</a>
+</footer>
+
+</body>
+</html>

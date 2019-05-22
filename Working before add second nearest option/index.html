@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<title>FlickTime</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+<head>
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>-->
+  <style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size: 16px;}
+img {margin-bottom: -8px;}
+.mySlides {display: none;}
+</style>
+<body class="w3-content w3-light-grey" style="max-width:1500px;">
+<body>
+
+  <!-- Features Section -->
+<div id="top" style="  border-radius: 30px 30px 30px;
+  background: #73AD21;
+  padding: 20px;"  class="w3-container w3-dark-grey w3-center">
+  <h1 class=""><b>FlickTime</b></h1>
+  <p>Cinema listings based on your location.</p>
+  </div>
+
+  <div class="w3-center">
+    <br>
+
+    <button class="w3-button w3-purple w3-round-xxlarge w3-padding-large" onclick="getLocation()">Locate <i class="fas fa-location-arrow w3-text-amber"></i> </button>
+
+<!--<script>
+// GET LOCATION
+var x = document.getElementById("demo");
+var l = document.getElementById("listingstable");
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+function showPosition(position) {
+  // x.innerHTML = "Latitude: " + position.coords.latitude +
+  // "<br>Longitude: " + position.coords.longitude;
+    console.log("location saved");
+var lat = position.coords.latitude;
+var lon = position.coords.longitude;
+// var url = "https://76ea5f03.ngrok.io/search/cinemas/coordinates/" + lat + "/" + lon;
+var url = "http://localhost:3000/search/cinemas/coordinates/" + lat + "/" + lon;
+var nearestcinema;
+var listings;
+fetch(url, {insecure: true, credentials: "same-origin"})
+.then(function(response) {
+    // The response is a Response instance.
+    // You parse the data into a useable format using `.json()`
+    return response.json();
+  }).then(function(data) {
+    // `data` is the parsed version of the JSON returned from the above endpoint.
+    console.log(data);  // { "userId": 1, "id": 1, "title": "...", "body": "..." }
+      nearestcinema = data.cinemas[0].id;
+     console.log(nearestcinema);
+     document.getElementById("cinema1").innerHTML = data.cinemas[0].name;
+     console.log(data.cinemas[0].name);
+  //    return fetch("https://76ea5f03.ngrok.io/get/times/cinema/" + nearestcinema); // make a 2nd request and return a promise
+    return fetch("http://localhost:3000/get/times/cinema/" + nearestcinema); // make a 2nd request and return a promise
+  })
+  .then(function(response) {
+      // The response is a Response instance.
+      // You parse the data into a useable format using `.json()`
+      return response.json();
+    }).then(function(data) {
+      // `data` is the parsed version of the JSON returned from the above endpoint.
+      console.log(data);  // { "userId": 1, "id": 1, "title": "...", "body": "..." }
+        listings = data.listings[0].title;
+         console.log(listings);
+         document.getElementById("table1").innerHTML = "<b>" + data.listings[0].title  + "</b>" + " " + data.listings[0].times +"<hr>"
+         + "<b>" + data.listings[1].title  + "</b>" + " " + data.listings[1].times +"<hr>"
+         + "<b>" + data.listings[2].title  + "</b>" + " " + data.listings[2].times +"<hr>"
+         + "<b>" + data.listings[3].title  + "</b>" + " " + data.listings[3].times +"<hr>"
+         +"<b>" + data.listings[4].title  + "</b>" + " " + data.listings[4].times +"<hr>"
+         + "<b>" + data.listings[5].title  + "</b>" + " " + data.listings[5].times +"<hr>"
+         + "<b>" + data.listings[6].title  + "</b>" + " " +"<p>"+ data.listings[6].times +"</p>" +"<hr>"
+         +"<b>" + data.listings[7].title  + "</b>" + " " + data.listings[7].times +"<hr>"
+  });  // I THINK THIS IS THE CLOSE
+//this was used to show promise  .then(res => console.log(res));
+//  console.log("the get worked");
+}
+</script>-->
+
+
+  </div>
+
+
+<div class="w3-container">
+
+<hr>
+
+<div class="w3-border">
+<div class="w3-bar w3-theme">
+  <button  id="cinema1" class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openCity(event,'Nearest')">Results:</button>
+  <button style="display: none" id="cinema2" class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openCity(event,'Nearest2')">2nd</button>
+  <button style="display: none" id="cinema3" class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openCity(event,'Nearest3')">3rd</button>
+</div>
+<div id="Nearest" class="w3-container city w3-animate-opacity">
+  <p id="table1" style="  overflow: auto;" class=" w3-container w3-content w3-left">
+  Use the Locate button to find local cinema listings.</p>
+</div>
+<div id="Nearest2" class="w3-container city w3-animate-opacity">
+  <p id="table2" style="align: left; overflow: auto;" class=" w3-container w3-content w3-left">
+  Use the Locate button to find local cinema listings.</p>
+</div>
+<div id="Nearest3" class="w3-container city w3-animate-opacity">
+  <p id="table3" style="overflow: auto;" class=" w3-container w3-content w3-left">
+  Use the Locate button to find local cinema listings.</p>
+</div>
+</div>
+
+
+<hr>
+
+
+
+<!-- Script for Sidebar, Tabs, Accordions, Progress bars and slideshows -->
+<script>
+// Side navigation
+function w3_open() {
+  var x = document.getElementById("mySidebar");
+  x.style.width = "100%";
+  x.style.fontSize = "40px";
+  x.style.paddingTop = "10%";
+  x.style.display = "block";
+}
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+// Tabs
+function openCity(evt, cityName) {
+  var i;
+  var x = document.getElementsByClassName("city");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  var activebtn = document.getElementsByClassName("testbtn");
+  for (i = 0; i < x.length; i++) {
+    activebtn[i].className = activebtn[i].className.replace(" w3-dark-grey", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " w3-dark-grey";
+}
+var mybtn = document.getElementsByClassName("testbtn")[0];
+mybtn.click();
+// Accordions
+function myAccFunc(id) {
+  var x = document.getElementById(id);
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+// Slideshows
+var slideIndex = 1;
+function plusDivs(n) {
+  slideIndex = slideIndex + n;
+  showDivs(slideIndex);
+}
+function showDivs(n) {
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length} ;
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  x[slideIndex-1].style.display = "block";
+}
+showDivs(1);
+// Progress Bars
+function move() {
+  var elem = document.getElementById("myBar");
+  var width = 5;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (width == 100) {
+      clearInterval(id);
+    } else {
+      width++;
+      elem.style.width = width + '%';
+      elem.innerHTML = width * 1  + '%';
+    }
+  }
+}
+</script>
+<script src="cinema2.js"></script>
+</body>
+</html>
